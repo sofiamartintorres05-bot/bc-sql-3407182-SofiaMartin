@@ -255,6 +255,6 @@ El sistema representa un mercado campesino donde diferentes vendedores comercial
 
 # Sofia Martin Torres
 
-📚 Estudiante en formación – Analisis y Desarrollo de Software
+📚 Estudiante en formación – Analisis y Desarrollo de Software.
 
-🚀 SENA - Formación en Analisis y Desarrollo de Software
+🚀 SENA - Formación en Analisis y Desarrollo de Software.
