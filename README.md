@@ -1,4 +1,4 @@
-# 🌾🌾 MERCADO CAMPESINO — FUNCIONES DE AGREGACIÓN SQL 🌾🌾
+# 🌾 MERCADO CAMPESINO — FUNCIONES DE AGREGACIÓN SQL 🌾
 
 ## 📚 Proyecto Semanal — Semana 06
 
@@ -238,6 +238,6 @@ El sistema simula un mercado campesino donde diferentes vendedores comercializan
 
 # Sofia Martin Torres
 
-📚 Estudiante en formación – Analisis y Desarrollo de Software
+📚 Estudiante en formación – Analisis y Desarrollo de Software.
 
-🚀 SENA - Formación en Analisis y Desarrollo de Software
+🚀 SENA - Formación en Analisis y Desarrollo de Software.
