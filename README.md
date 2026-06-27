@@ -1,132 +1,250 @@
-﻿# 🌾 Mercado Campesino — Consultas SELECT SQL
+﻿# 🌾🌾🌾 MERCADO CAMPESINO — CONSULTAS SELECT SQL 🌾🌾🌾
 
-> Proyecto académico Semana 04 | SQL relacional y consultas de selección.
+## 📚 Proyecto Semanal — Semana 04
+
+Proyecto académico desarrollado en SQL enfocado en la utilización de consultas `SELECT` para la extracción y organización de información dentro de una base de datos relacional.
+
+El sistema representa un mercado campesino donde se administran productos, clientes, vendedores y ventas mediante consultas estructuradas.
+
+---
 
 ## 📌 Resumen del proyecto
 
-Este repositorio contiene un conjunto de consultas `SELECT` diseñadas para extraer y analizar información de una base de datos de mercado campesino. El proyecto trabaja con tablas de vendedores, clientes, productos y ventas, aplicando filtros, ordenamientos y paginación.
+Este repositorio contiene un conjunto de consultas SQL diseñadas para explorar y analizar los datos de un mercado campesino. La base de datos incluye tablas de vendedores, clientes, productos y ventas, y el script muestra distintos métodos para obtener información útil mediante filtros, ordenamientos y paginación.
 
 ## 📋 Qué se encuentra aquí
 
-- Consultas SQL para explorar datos de un mercado campesino
-- Uso práctico de `WHERE`, `ORDER BY`, `LIMIT`, `OFFSET`, `AND`, `OR` y alias con `AS`
-- Definición de consultas para inventario, ventas y clientes
-- Ejemplos de resultados y criterios de filtrado
+- Consultas `SELECT` para extraer datos de un mercado campesino.
+- Ejemplos de `WHERE`, `ORDER BY`, `LIMIT`, `OFFSET`, `AND`, `OR` y alias `AS`.
+- Consultas de inventario, análisis de ventas y gestión de clientes.
+- Buena práctica en consultas SELECT con criterios reales.
 
 ---
 
 ## 📚 Tabla de contenidos
 
-- [Objetivo](#objetivo)
-- [Tablas del proyecto](#tablas-del-proyecto)
-- [Consultas implementadas](#consultas-implementadas)
-- [Tecnologías](#tecnologías)
-- [Cómo ejecutar](#cómo-ejecutar)
-- [Estructura del proyecto](#estructura-del-proyecto)
-- [Aprendizajes](#aprendizajes)
-- [Autor](#autor)
+- [Objetivo General](#🎯-objetivo-general)
+- [Tablas Utilizadas](#🧱-tablas-utilizadas)
+- [Consultas Implementadas](#🔍-consultas-implementadas)
+- [Tecnologías Utilizadas](#🛠️-tecnologías-utilizadas)
+- [Cómo Ejecutar el Proyecto](#▶️-ejecución-del-proyecto)
+- [Organización del Proyecto](#📂-organización-del-proyecto)
+- [Aprendizajes Aplicados](#📚-aprendizajes-aplicados)
+- [Contexto del Proyecto](#🌱-contexto-del-proyecto)
+- [Autor](#👩‍💻-autor)
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivo General
 
-Aplicar consultas SQL para obtener información relevante del dominio del mercado campesino, demostrando el uso de las principales operaciones de selección y filtrado en datos relacionales.
+Aplicar consultas SQL utilizando herramientas fundamentales del lenguaje:
+
+- `SELECT`
+- `WHERE`
+- `ORDER BY`
+- `LIMIT`
+- `OFFSET`
+- Alias con `AS`
+- Operadores lógicos `AND` y `OR`
 
 ---
 
-## 🧱 Tablas del proyecto
+## 🧱 Tablas Utilizadas
 
-Las entidades principales utilizadas en el proyecto son:
+La base de datos utiliza las siguientes entidades:
 
-| Tabla | Descripción |
+| Tabla | Función |
 |---|---|
-| `vendors` | Vendedores del mercado campesino |
-| `customers` | Clientes registrados |
-| `products` | Productos agrícolas disponibles |
-| `sales` | Registro de ventas realizadas |
+| `vendors` | Registro de vendedores |
+| `customers` | Registro de clientes |
+| `products` | Inventario de productos |
+| `sales` | Historial de ventas |
 
 ---
 
-## 🔍 Consultas implementadas
-
-Se desarrollaron consultas para los siguientes casos de uso:
-
-1. **Listado general de productos** con alias descriptivos.
-2. **Productos con precio mayor a 5000**.
-3. **Frutas con stock mayor a 30** usando `AND`.
-4. **Top 5 productos más costosos** con `ORDER BY DESC` y `LIMIT`.
-5. **Clientes ordenados alfabéticamente**.
-6. **Productos de categoría Lácteos o Verduras** usando `OR`.
-7. **Paginación primera página** con `LIMIT` y `OFFSET`.
-8. **Paginación segunda página** de resultados.
-9. **Ventas superiores a 10000** ordenadas de mayor a menor.
-10. **Productos con bajo stock** para control de inventario.
-
-> Estas consultas muestran cómo extraer datos útiles y estructurar resultados en escenarios reales.
+## 🔍 Consultas Implementadas
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## ✅ CONSULTA 1 — LISTADO GENERAL DE PRODUCTOS
+
+Muestra todos los productos registrados utilizando nombres descriptivos en español.
+
+### Conceptos aplicados:
+- `SELECT`
+- Alias con `AS`
+
+---
+
+## ✅ CONSULTA 2 — FILTRO POR PRECIO
+
+Consulta los productos cuyo precio es mayor a 5000.
+
+### Conceptos aplicados:
+- `WHERE`
+- Comparaciones numéricas
+
+---
+
+## ✅ CONSULTA 3 — FILTRO COMBINADO CON AND
+
+Muestra productos de categoría frutas con stock superior a 30 unidades.
+
+### Conceptos aplicados:
+- `AND`
+- Condiciones múltiples
+
+---
+
+## ✅ CONSULTA 4 — TOP 5 PRODUCTOS MÁS COSTOSOS
+
+Obtiene los cinco productos con mayor precio.
+
+### Conceptos aplicados:
+- `ORDER BY DESC`
+- `LIMIT`
+
+---
+
+## ✅ CONSULTA 5 — CLIENTES ORDENADOS ALFABÉTICAMENTE
+
+Organiza la lista de clientes por nombre ascendente.
+
+### Conceptos aplicados:
+- `ORDER BY ASC`
+
+---
+
+## ✅ CONSULTA 6 — FILTRO CON OPERADOR OR
+
+Muestra productos pertenecientes a las categorías Lácteos o Verduras.
+
+### Conceptos aplicados:
+- Operador lógico `OR`
+
+---
+
+## ✅ CONSULTA 7 — PAGINACIÓN (PÁGINA 1)
+
+Visualiza los primeros tres productos ordenados alfabéticamente.
+
+### Conceptos aplicados:
+- `LIMIT`
+- `OFFSET`
+
+---
+
+## ✅ CONSULTA 8 — PAGINACIÓN (PÁGINA 2)
+
+Muestra los siguientes tres productos del listado.
+
+### Conceptos aplicados:
+- Paginación SQL
+- Navegación de registros
+
+---
+
+## ✅ CONSULTA 9 — CONSULTA DE VENTAS
+
+Muestra ventas superiores a 10000 ordenadas de mayor a menor.
+
+### Conceptos aplicados:
+- Filtrado numérico
+- Orden descendente
+
+---
+
+## ✅ CONSULTA 10 — PRODUCTOS CON BAJO STOCK
+
+Permite identificar productos con menos de 40 unidades disponibles.
+
+### Conceptos aplicados:
+- Control básico de inventario
+- Ordenamiento ascendente
+
+---
+
+## 🛠️ Tecnologías Utilizadas
 
 - SQL
 - SQLite
-- Visual Studio Code
-- Git
+- Git Bash
 - GitHub
+- Visual Studio Code
 
 ---
 
-## ▶️ Cómo ejecutar
+## ▶️ Ejecución del Proyecto
 
-1. Clona el repositorio:
+## 1️⃣ Clonar repositorio
 
 ```bash
 git clone URL_DEL_REPOSITORIO
 ```
 
-2. Entra a la carpeta del proyecto:
+---
+
+## 2️⃣ Ingresar a la carpeta
 
 ```bash
-cd Proyecto_SQL_Mercado
+cd mercado-campesino-select
 ```
 
-3. Ejecuta el script SQL en SQLite:
+---
+
+## 3️⃣ Ejecutar el archivo SQL
 
 ```bash
 sqlite3 mercado.db < consultas_select.sql
 ```
 
-> Si utilizas otra herramienta SQL, carga el script en el editor y ejecútalo según su formato.
-
 ---
 
-## 📂 Estructura del proyecto
+## 📂 Organización del Proyecto
 
 ```plaintext
-Proyecto_SQL_Mercado/
-├── README.md
+mercado-campesino-select/
+│
 ├── consultas_select.sql
-└── Starter/
-    └── proyecto.sql
+├── README.md
 ```
 
 ---
 
-## 🧠 Aprendizajes
+## 📚 Aprendizajes Aplicados
 
-- Construcción y ejecución de consultas SQL de selección
-- Filtrado de registros con condiciones múltiples
-- Ordenamiento de resultados con `ORDER BY`
-- Paginación de datos con `LIMIT` y `OFFSET`
-- Uso de alias para mejor legibilidad de columnas
-- Análisis de inventario y ventas en un dominio realista
+Durante el desarrollo del proyecto se aplicaron conocimientos sobre:
+
+- Bases de datos relacionales
+- Consultas SQL
+- Filtrado de datos
+- Ordenamiento de registros
+- Paginación
+- Buenas prácticas en consultas SELECT
 
 ---
 
-## 👩‍💻 Autor
+## 🌱 Contexto del Proyecto
 
-**Sofia Martin Torres**
+El sistema simula el funcionamiento de un mercado campesino donde diferentes vendedores ofrecen productos agrícolas y alimenticios a distintos clientes.
 
-📚 Estudiante en formación – Análisis y Desarrollo de Software
+### Productos registrados:
+
+- Papa criolla
+- Aguacate
+- Mora
+- Fresa
+- Leche fresca
+- Huevos
+- Panela
+- Queso campesino
+
+---
+
+## 👩‍💻 AUTOR
+
+# Sofia Martin Torres
+
+📚 Estudiante en formación – Analisis y Desarrollo de Software
 
 🚀 SENA - Formación en Analisis y Desarrollo de Software
