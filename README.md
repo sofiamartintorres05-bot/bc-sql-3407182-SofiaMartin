@@ -1,80 +1,78 @@
-# 🌾 Mercado Campesino - Base de Datos
+﻿# 🌾 Mercado Campesino - Base de Datos
 
-> *Proyecto Semana 02* | DDL: Diseño de Esquemas
+> Proyecto Semana 02 | DDL: Diseño de Esquemas
 
-## 👋 Bienvenido
+## 👋 Bienvenida
 
-Este proyecto implementa una base de datos para un mercado campesino colombiano, gestionando la relación entre productos agrícolas y vendedores.
+Este repositorio documenta el diseño de una base de datos para un mercado campesino colombiano. El objetivo es practicar DDL, integridad referencial y consultas SQL con un caso práctico de productos agrícolas y vendedores.
 
-| Entidad | Descripción | Registros |
-|---------|-------------|-----------|
-| 🥕 *Items (productos)* | Productos agrícolas disponibles | 15 |
-| 👨‍🌾 *Entities (vendedores)* | Vendedores del mercado | 5 |
-| 🔗 *Relations (relaciones)* | Relación producto-vendedor | 15 |
+## 🔥 Qué incluye
 
-Incluye creación de tablas con claves foráneas, restricciones CHECK y consultas básicas.
-
----
-
-## 🧱 Estructura de la Base de Datos
-
-### 🥕 Tabla: Items (Productos)
-
-Almacena los productos agrícolas disponibles en el mercado.
-
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| id | INTEGER | PRIMARY KEY | Identificador único |
-| name | TEXT | NOT NULL | Nombre del producto |
-| category | TEXT | NOT NULL | Categoría (Verduras, Frutas, Granos, etc.) |
-| price | REAL | NOT NULL, CHECK(price > 0) | Precio unitario |
-| stock | INTEGER | NOT NULL, DEFAULT 0, CHECK(stock >= 0) | Cantidad en inventario |
-| is_active | INTEGER | NOT NULL, DEFAULT 1 | Estado activo/inactivo |
-
-### 👨‍🌾 Tabla: Entities (Vendedores)
-
-Registra los vendedores del mercado campesino.
-
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| id | INTEGER | PRIMARY KEY | Identificador único |
-| name | TEXT | NOT NULL | Nombre del vendedor |
-| farm_name | TEXT | NOT NULL | Nombre de la finca |
-| phone | TEXT | UNIQUE, NOT NULL | Teléfono de contacto |
-| city | TEXT | NOT NULL | Ciudad de origen |
-
-### 🔗 Tabla: Relations (Relaciones)
-
-Tabla intermedia que relaciona productos con vendedores (muchos a muchos).
-
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| id | INTEGER | PRIMARY KEY | Identificador único |
-| item_id | INTEGER | NOT NULL, FOREIGN KEY | Referencia a items |
-| entity_id | INTEGER | NOT NULL, FOREIGN KEY | Referencia a entities |
+- Diseño de tablas con claves primarias y foráneas
+- Restricciones `NOT NULL`, `UNIQUE` y `CHECK`
+- Modelo de relación muchos a muchos
+- Datos de prueba realistas del contexto colombiano
+- Consultas SQL de verificación
 
 ---
 
-## 🔗 Diagrama de Relaciones
+## 🧱 Estructura de la base de datos
 
-┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-│ items │ │ relations │ │ entities │
-├─────────────┤ ├─────────────┤ ├─────────────┤
-│ id (PK) │◄──────│ item_id │ │ id (PK) │
-│ name │ │ (FK) │───────│ entity_id │
-│ category │ │ id (PK) │ │ (FK) │
-│ price │ │ entity_id │ │ name │
-│ stock │ │ │ │ farm_name │
-│ is_active │ └─────────────┘ │ phone │
-└─────────────┘ │ city │
-└─────────────┘
+### 🥕 Tabla `items`
 
+Registra los productos agrícolas que se venden en el mercado.
 
-> ✅ Relación muchos a muchos: Un producto puede ser vendido por múltiples vendedores.
+| Campo | Tipo | Restricciones | Descripción |
+|------|------|---------------|-------------|
+| `id` | INTEGER | `PRIMARY KEY` | Identificador único |
+| `name` | TEXT | `NOT NULL` | Nombre del producto |
+| `category` | TEXT | `NOT NULL` | Categoría del producto |
+| `price` | REAL | `NOT NULL`, `CHECK(price > 0)` | Precio unitario |
+| `stock` | INTEGER | `NOT NULL`, `DEFAULT 0`, `CHECK(stock >= 0)` | Cantidad disponible |
+| `is_active` | INTEGER | `NOT NULL`, `DEFAULT 1` | Estado activo/inactivo |
+
+### 👨‍🌾 Tabla `entities`
+
+Registra los vendedores que participan en el mercado.
+
+| Campo | Tipo | Restricciones | Descripción |
+|------|------|---------------|-------------|
+| `id` | INTEGER | `PRIMARY KEY` | Identificador único |
+| `name` | TEXT | `NOT NULL` | Nombre del vendedor |
+| `farm_name` | TEXT | `NOT NULL` | Nombre de la finca |
+| `phone` | TEXT | `UNIQUE`, `NOT NULL` | Teléfono de contacto |
+| `city` | TEXT | `NOT NULL` | Ciudad de origen |
+
+### 🔗 Tabla `relations`
+
+Relaciona productos con vendedores para modelar una relación muchos a muchos.
+
+| Campo | Tipo | Restricciones | Descripción |
+|------|------|---------------|-------------|
+| `id` | INTEGER | `PRIMARY KEY` | Identificador único |
+| `item_id` | INTEGER | `NOT NULL`, `FOREIGN KEY` | Referencia a `items(id)` |
+| `entity_id` | INTEGER | `NOT NULL`, `FOREIGN KEY` | Referencia a `entities(id)` |
 
 ---
 
-## 📊 Datos del Proyecto
+## 🔗 Diagrama de relaciones
+
+```txt
+items          relations       entities
+------         ----------      -------
+id (PK)  <---  item_id         id (PK)
+name               id (PK)      name
+category          entity_id  ---> farm_name
+price                           phone
+stock                           city
+is_active
+```
+
+> ✅ Relación muchos a muchos: un producto puede ser ofrecido por varios vendedores.
+
+---
+
+## 📊 Datos incluidos
 
 ### 👨‍🌾 Vendedores (5)
 
@@ -90,34 +88,34 @@ Tabla intermedia que relaciona productos con vendedores (muchos a muchos).
 
 | Categoría | Productos |
 |-----------|------------|
-| *Verduras* | Tomate, Zanahoria, Lechuga, Cebolla |
-| *Frutas* | Mango, Banano, Piña, Uva |
-| *Granos* | Arroz, Frijol, Lenteja |
-| *Tubérculos* | Papa criolla, Yuca |
-| *Condimentos* | Ajo, Cilantro |
+| Verduras | Tomate, Zanahoria, Lechuga, Cebolla |
+| Frutas | Mango, Banano, Piña, Uva |
+| Granos | Arroz, Frijol, Lenteja |
+| Tubérculos | Papa criolla, Yuca |
+| Condimentos | Ajo, Cilantro |
 
-> ✅ Todos los datos fueron diseñados con valores realistas del contexto colombiano.
+> ✅ Los datos fueron creados pensando en un contexto agrícola colombiano.
 
 ---
 
-## ⚙️ ¿Cómo usar este script?
+## ⚙️ Cómo usarlo
 
-### 1️⃣ Ejecutar el archivo SQL
+### 1. Ejecutar el script SQL
 
-bash
+```bash
 sqlite3 mercado.db < proyecto.sql
+```
 
+### 2. Herramientas recomendadas
 
-### 2️⃣ Herramientas recomendadas
+- SQLite (línea de comandos)
+- DB Browser for SQLite
+- Visual Studio Code con extensión SQLite
 
-- *SQLite* (línea de comandos)
-- *DB Browser for SQLite*
-- *Visual Studio Code* (extensión SQLite)
+### 3. Flujo del script
 
-### 3️⃣ El script se ejecuta en orden
-
-1. Activa claves foráneas (PRAGMA foreign_keys = ON)
-2. Limpia tablas existentes
+1. Activa las restricciones de clave foránea: `PRAGMA foreign_keys = ON`
+2. Limpia tablas existentes si existen
 3. Crea las tablas
 4. Inserta los datos
 5. Ejecuta consultas de verificación
@@ -126,86 +124,85 @@ sqlite3 mercado.db < proyecto.sql
 
 ## 🔍 Consultas incluidas
 
-### 📌 Listar todos los productos
+### 📌 Listar productos
 
-sql
+```sql
 SELECT id, name, category, price, stock
 FROM items;
-
+```
 
 ### 📌 Listar vendedores
 
-sql
+```sql
 SELECT id, name, farm_name, city
 FROM entities;
-
+```
 
 ### 📌 Listar relaciones
 
-sql
+```sql
 SELECT id, item_id, entity_id
 FROM relations;
+```
 
+### 📌 Contar productos
 
-### 📌 Contar total de productos
-
-sql
+```sql
 SELECT COUNT(id) AS total_items
 FROM items;
-
+```
 
 ---
 
-## 🛡️ Restricciones Implementadas
+## 🛡️ Restricciones implementadas
 
-| Restricción            | Tabla / Campo     | Descripción                    |
-|----------------------|------------------|--------------------------------|
-| PRIMARY KEY          | Todas            | Identificador único           |
-| NOT NULL             | Varios campos    | Campo obligatorio             |
-| UNIQUE               | entities.phone   | Teléfono sin duplicados       |
-| CHECK (price > 0)    | items.price      | Precio mayor a cero           |
-| CHECK (stock >= 0)   | items.stock      | Stock no negativo             |
-| DEFAULT 1            | items.is_active  | Activo por defecto            |
-| FOREIGN KEY          | relations        | Integridad referencial        |
+| Restricción | Tabla / Campo | Descripción |
+|------------|---------------|-------------|
+| `PRIMARY KEY` | Todas | Identificador único |
+| `NOT NULL` | Varios campos | Campo obligatorio |
+| `UNIQUE` | `entities.phone` | Teléfonos únicos |
+| `CHECK(price > 0)` | `items.price` | Precio mayor a cero |
+| `CHECK(stock >= 0)` | `items.stock` | Stock no negativo |
+| `DEFAULT 1` | `items.is_active` | Activo por defecto |
+| `FOREIGN KEY` | `relations` | Integridad referencial |
+
 ---
 
-## 🧠 Lo que se aprende con este proyecto
+## 🧠 Lo que se aprende
 
-- ✔️ Creación de tablas con DDL
-- ✔️ Definición de claves primarias y foráneas
-- ✔️ Restricciones CHECK
-- ✔️ Restricciones UNIQUE
-- ✔️ Valores por defecto (DEFAULT)
-- ✔️ Diseño de relaciones muchos a muchos
-- ✔️ Inserción de datos (DML)
-- ✔️ Consultas básicas con SELECT
-- ✔️ Uso de COUNT
+- Creación de tablas con DDL
+- Diseño de claves primarias y foráneas
+- Uso de restricciones `CHECK`, `UNIQUE` y `DEFAULT`
+- Modelado de relaciones muchos a muchos
+- Inserción de datos con DML
+- Consultas básicas con `SELECT`
+- Conteo de registros con `COUNT`
 
 ---
 
 ## ⚠️ Notas importantes
 
-- Este es un proyecto de *DDL* (Data Definition Language)
-- Se implementan *claves foráneas* para integridad referencial
-- La tabla relations permite relación muchos a muchos
-- Los datos son del *contexto colombiano*
+- Este proyecto se centra en DDL y diseño de esquemas.
+- Se utiliza integridad referencial con claves foráneas.
+- La tabla `relations` modela la relación entre productos y vendedores.
+- Los datos están pensados en un contexto colombiano.
 
 ---
 
-## 🔥 Próximos pasos
+## 🔮 Próximos pasos
 
-- 🔹 Agregar tabla de *clientes*
-- 🔹 Crear tabla de *ventas*
-- 🔹 Implementar consultas con *JOIN*
-- 🔹 Agregar *categorías* como tabla independiente
-- 🔹 Integrar con API (FastAPI)
+- Agregar tabla de `clientes`
+- Crear tabla de `ventas`
+- Añadir consultas con `JOIN`
+- Separar categorías en su propia tabla
+- Integrar con una API en Python o FastAPI
 
 ---
 
 ## 👩‍💻 Autor
 
-*Sofia Martin Torres*
+Sofía Martín Torres
 
-📚 Estudiante en formación – Analisis y Desarrollo de Software
+📚 Estudiante en formación – Análisis y Desarrollo de Software
 
-🚀 SENA - Formación en Analisis y Desarrollo de Software
+🚀 SENA - Formación en Análisis y Desarrollo de Software
